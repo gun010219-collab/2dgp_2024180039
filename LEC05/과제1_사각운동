@@ -1,0 +1,42 @@
+from pico2d import *
+
+open_canvas()
+
+grass = load_image('grass.png')
+character = load_image('character.png')
+
+x = 100
+y = 100
+direction = 0
+
+while True:
+    clear_canvas()
+
+    grass.draw(400, 30)
+    character.draw(x, y)
+
+    update_canvas()
+
+    if direction == 0:       
+        x += 2
+        if x >= 700:
+            direction = 1
+
+    elif direction == 1:     
+        y += 2
+        if y >= 500:
+            direction = 2
+
+    elif direction == 2:     
+        x -= 2
+        if x <= 100:
+            direction = 3
+
+    elif direction == 3: 
+        y -= 2
+        if y <= 100:
+            direction = 0
+
+    delay(0.01)
+
+close_canvas()

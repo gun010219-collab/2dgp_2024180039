@@ -1,0 +1,33 @@
+from pico2d import *
+import math
+
+open_canvas()
+
+grass = load_image('grass.png')
+character = load_image('character.png')
+
+center_x = 400
+center_y = 300
+radius = 200
+angle = 0
+
+while True:
+    clear_canvas()
+
+    grass.draw(400, 30)
+
+    x = center_x + radius * math.cos(angle)
+    y = center_y + radius * math.sin(angle)
+
+    character.draw(x, y)
+
+    update_canvas()
+
+    angle += 0.02
+
+    if angle >= 2 * math.pi:
+        angle = 0
+
+    delay(0.01)
+
+close_canvas()
