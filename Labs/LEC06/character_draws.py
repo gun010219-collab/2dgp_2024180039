@@ -73,6 +73,7 @@ def draw_triangle_2():
         t = step / 100
         x = 700 + (400 - 700) * t
         y = 100 + (500 - 100) * t
+        draw_character(x, y)
         pass
 
 def draw_triangle_3():
