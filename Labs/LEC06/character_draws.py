@@ -61,8 +61,23 @@ def move_rectangle():
     draw_left()
     pass
 
+def draw_triangle_1():
+    print('TRIANGLE 1')
+    pass
+
+def draw_triangle_2():
+    print('TRIANGLE 2')
+    pass
+
+def draw_triangle_3():
+    print('TRIANGLE 3')
+    pass
+
 def move_triangle():
     print('TRIANGLE')
+    draw_triangle_1()
+    draw_triangle_2()
+    draw_triangle_3()
     pass
 
 
