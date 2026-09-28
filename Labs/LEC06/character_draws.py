@@ -78,7 +78,8 @@ def draw_triangle_2():
 
 def draw_triangle_3():
     print('TRIANGLE 3')
-    pass
+    for step in range(101):
+        pass
 
 def move_triangle():
     print('TRIANGLE')
