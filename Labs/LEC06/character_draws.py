@@ -71,6 +71,7 @@ def draw_triangle_2():
     print('TRIANGLE 2')
     for step in range(101):
         t = step / 100
+        x = 700 + (400 - 700) * t
         pass
 
 def draw_triangle_3():
