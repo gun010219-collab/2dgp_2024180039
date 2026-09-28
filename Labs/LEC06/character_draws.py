@@ -80,6 +80,7 @@ def draw_triangle_3():
     print('TRIANGLE 3')
     for step in range(101):
         t = step / 100
+        x = 400 + (100 - 400) * t
         pass
 
 def move_triangle():
