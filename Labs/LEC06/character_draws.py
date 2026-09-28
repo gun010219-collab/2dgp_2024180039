@@ -26,12 +26,12 @@ def move_circle():
 def draw_top():
     print('TOP')
     for x in range(50, 750, 5):
-        draw_character(x)
+        draw_character(x, 550)
     pass
 
-def draw_character(x):
+def draw_character(x, y):
     clear_canvas()
-    boy.draw(x, 550)
+    boy.draw(x, y)
     update_canvas()
     delay(0.01)
 
