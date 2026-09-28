@@ -36,9 +36,9 @@ def draw_character(x, y):
     delay(0.01)
 
 def draw_right():
-    print('RIGHT') 
+    print('RIGHT')
     for y in range(550, 50, -5):
-        print(y)
+        draw_character(750, y)
         pass
       
 def draw_bottom():
