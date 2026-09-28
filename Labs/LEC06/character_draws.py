@@ -63,7 +63,8 @@ def move_rectangle():
 
 def draw_triangle_1():
     print('TRIANGLE 1')
-    pass
+    for x in range(100, 700, 5):
+        pass
 
 def draw_triangle_2():
     print('TRIANGLE 2')
