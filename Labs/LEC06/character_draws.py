@@ -49,7 +49,8 @@ def draw_bottom():
 
 def draw_left():
     print('LEFT')
-    pass
+    for y in range(50, 550, 5):
+        pass
 
 def move_rectangle():
     print('RECTANGLE')
