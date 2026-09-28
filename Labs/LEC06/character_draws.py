@@ -87,7 +87,6 @@ def move_triangle():
     draw_triangle_1()
     draw_triangle_2()
     draw_triangle_3()
-    pass
 
 
 while True:
