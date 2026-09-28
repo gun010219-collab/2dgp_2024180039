@@ -64,6 +64,7 @@ def move_rectangle():
 def draw_triangle_1():
     print('TRIANGLE 1')
     for x in range(100, 700, 5):
+        draw_character(x, 100)
         pass
 
 def draw_triangle_2():
