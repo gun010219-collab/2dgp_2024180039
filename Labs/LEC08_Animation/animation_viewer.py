@@ -17,7 +17,7 @@ while True:
             idle.clip_draw(
                 0, frame * 160, 160, 160,
                 400, 300,
-                320, 320
+                400, 400
             )
 
             update_canvas()
@@ -36,7 +36,7 @@ while True:
             walk.clip_draw(
                 0, frame * 160, 160, 160,
                 400, 300,
-                320, 320
+                400, 400
             )
 
             update_canvas()
@@ -55,7 +55,7 @@ while True:
             jump.clip_draw(
                 0, frame * 160, 160, 160,
                 400, 300,
-                320, 320
+                400, 400
             )
 
             update_canvas()
@@ -74,7 +74,7 @@ while True:
             attack.clip_draw(
                 0, frame * 160, 160, 160,
                 400, 300,
-                320, 320
+                400, 400
             )
 
             update_canvas()
