@@ -4,6 +4,7 @@ open_canvas()
 
 idle = load_image('Idle.png')
 walk = load_image('Walk.png')
+jump = load_image('Jump.png')
 
 frame = 0
 
