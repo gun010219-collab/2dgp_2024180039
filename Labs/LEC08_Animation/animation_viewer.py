@@ -30,7 +30,7 @@ def play_idle_1_second():
 while True:
     frame = 0
 
-    # Idle
+    # Idle - 8 Frames
     for repeat in range(5):
         for i in range(8):
             clear_canvas()
@@ -50,7 +50,7 @@ while True:
 
     frame = 0
 
-    # Walk
+    # Walk - 10 Frames
     for repeat in range(5):
 
         # 왼쪽 -> 오른쪽
@@ -88,7 +88,7 @@ while True:
 
     frame = 0
 
-    # Jump
+    # Jump - 4 Frames
     for repeat in range(5):
 
         # 상승
@@ -125,7 +125,7 @@ while True:
 
     frame = 0
 
-    # Attack
+    # Attack - 8 Frames
     for repeat in range(5):
         for i in range(8):
             clear_canvas()
