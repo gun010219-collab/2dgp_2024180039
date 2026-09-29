@@ -3,6 +3,7 @@ from pico2d import *
 open_canvas()
 
 idle = load_image('Idle.png')
+walk = load_image('Walk.png')
 
 frame = 0
 
