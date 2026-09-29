@@ -41,4 +41,6 @@ for repeat in range(5):
         frame = (frame + 1) % 10
         delay(0.1)
 
+delay(1)
+
 close_canvas()
