@@ -90,19 +90,36 @@ while True:
 
     # Jump
     for repeat in range(5):
-        for i in range(4):
+
+        # 상승
+        for y in range(300, 501, 10):
             clear_canvas()
 
             jump.clip_draw(
                 0, frame * 160, 160, 160,
-                400, 300,
+                400, y,
                 400, 400
             )
 
             update_canvas()
 
             frame = (frame + 1) % 4
-            delay(0.1)
+            delay(0.03)
+
+        # 하강
+        for y in range(500, 299, -10):
+            clear_canvas()
+
+            jump.clip_draw(
+                0, frame * 160, 160, 160,
+                400, y,
+                400, 400
+            )
+
+            update_canvas()
+
+            frame = (frame + 1) % 4
+            delay(0.03)
 
     play_idle_1_second()
 
