@@ -51,8 +51,9 @@ while True:
         for x in range(700, 99, -10):
             clear_canvas()
 
-            walk.clip_draw(
+            walk.clip_composite_draw(
                 0, frame * 160, 160, 160,
+                0, 'h',
                 x, 300,
                 400, 400
             )
