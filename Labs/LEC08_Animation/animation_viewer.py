@@ -66,18 +66,19 @@ delay(1)
 
 frame = 0
 
-for i in range(8):
-    clear_canvas()
+for repeat in range(5):
+    for i in range(8):
+        clear_canvas()
 
-    attack.clip_draw(
-        0, frame * 160, 160, 160,
-        400, 300,
-        320, 320
-    )
+        attack.clip_draw(
+            0, frame * 160, 160, 160,
+            400, 300,
+            320, 320
+        )
 
-    update_canvas()
+        update_canvas()
 
-    frame = (frame + 1) % 8
-    delay(0.1)
+        frame = (frame + 1) % 8
+        delay(0.1)
 
 close_canvas()
