@@ -44,4 +44,20 @@ for repeat in range(5):
 
 delay(1)
 
+frame = 0
+
+for i in range(4):
+    clear_canvas()
+
+    jump.clip_draw(
+        0, frame * 160, 160, 160,
+        400, 300,
+        320, 320
+    )
+
+    update_canvas()
+
+    frame = (frame + 1) % 4
+    delay(0.1)
+
 close_canvas()
