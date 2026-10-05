@@ -161,7 +161,10 @@ motion_10_frames = [
 
 while True:
 
+    # ==================================================
     # IDLE - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in idle_frames:
             clear_canvas()
@@ -177,9 +180,10 @@ while True:
             delay(0.1)
 
 
-    # 1초 Idle
+    # IDLE 마지막 프레임에서 1초 정지
+    left, bottom, width, height = idle_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
@@ -192,38 +196,88 @@ while True:
     delay(1)
 
 
+    # ==================================================
     # RUN - 5회
+    # 애니메이션과 동시에 좌우 이동
+    # ==================================================
+
+    run_x = 100
+    run_speed = 20
+
+    last_run_frame = run_frames[0]
+
     for repeat in range(5):
         for left, bottom, width, height in run_frames:
+
             clear_canvas()
 
-            sonic.clip_draw(
-                left, bottom,
-                width, height,
-                600, 300,
-                width * 4, height * 4
-            )
+            # 오른쪽으로 이동
+            if run_speed > 0:
+                sonic.clip_draw(
+                    left, bottom,
+                    width, height,
+                    run_x, 300,
+                    width * 4, height * 4
+                )
+
+            # 왼쪽으로 이동
+            else:
+                sonic.clip_composite_draw(
+                    left, bottom,
+                    width, height,
+                    0, 'h',
+                    run_x, 300,
+                    width * 4, height * 4
+                )
 
             update_canvas()
             delay(0.08)
 
+            last_run_frame = (left, bottom, width, height)
 
-    # 1초 Idle
+            run_x += run_speed
+
+            # 오른쪽 경계
+            if run_x >= 1100:
+                run_x = 1100
+                run_speed = -20
+
+            # 왼쪽 경계
+            elif run_x <= 100:
+                run_x = 100
+                run_speed = 20
+
+
+    # RUN 종료 위치에서 1초 정지
+    left, bottom, width, height = last_run_frame
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
-    sonic.clip_draw(
-        left, bottom,
-        width, height,
-        600, 300,
-        width * 4, height * 4
-    )
+    if run_speed > 0:
+        sonic.clip_draw(
+            left, bottom,
+            width, height,
+            run_x, 300,
+            width * 4, height * 4
+        )
+
+    else:
+        sonic.clip_composite_draw(
+            left, bottom,
+            width, height,
+            0, 'h',
+            run_x, 300,
+            width * 4, height * 4
+        )
 
     update_canvas()
     delay(1)
 
 
+    # ==================================================
     # SPIN - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in spin_frames:
             clear_canvas()
@@ -239,9 +293,9 @@ while True:
             delay(0.08)
 
 
-    # 1초 Idle
+    left, bottom, width, height = spin_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
@@ -254,7 +308,10 @@ while True:
     delay(1)
 
 
+    # ==================================================
     # ROLL - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in roll_frames:
             clear_canvas()
@@ -270,9 +327,9 @@ while True:
             delay(0.08)
 
 
-    # 1초 Idle
+    left, bottom, width, height = roll_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
@@ -285,7 +342,10 @@ while True:
     delay(1)
 
 
+    # ==================================================
     # MOTION 5 - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in motion_5_frames:
             clear_canvas()
@@ -301,9 +361,9 @@ while True:
             delay(0.08)
 
 
-    # 1초 Idle
+    left, bottom, width, height = motion_5_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
@@ -316,7 +376,10 @@ while True:
     delay(1)
 
 
+    # ==================================================
     # MOTION 6 - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in motion_6_frames:
             clear_canvas()
@@ -332,9 +395,9 @@ while True:
             delay(0.08)
 
 
-    # 1초 Idle
+    left, bottom, width, height = motion_6_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
@@ -347,7 +410,10 @@ while True:
     delay(1)
 
 
+    # ==================================================
     # MOTION 7 - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in motion_7_frames:
             clear_canvas()
@@ -363,9 +429,9 @@ while True:
             delay(0.08)
 
 
-    # 1초 Idle
+    left, bottom, width, height = motion_7_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
@@ -378,7 +444,10 @@ while True:
     delay(1)
 
 
+    # ==================================================
     # MOTION 8 - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in motion_8_frames:
             clear_canvas()
@@ -394,9 +463,9 @@ while True:
             delay(0.08)
 
 
-    # 1초 Idle
+    left, bottom, width, height = motion_8_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
@@ -409,7 +478,10 @@ while True:
     delay(1)
 
 
+    # ==================================================
     # MOTION 9 - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in motion_9_frames:
             clear_canvas()
@@ -425,9 +497,9 @@ while True:
             delay(0.08)
 
 
-    # 1초 Idle
+    left, bottom, width, height = motion_9_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
@@ -440,7 +512,10 @@ while True:
     delay(1)
 
 
+    # ==================================================
     # MOTION 10 - 5회
+    # ==================================================
+
     for repeat in range(5):
         for left, bottom, width, height in motion_10_frames:
             clear_canvas()
@@ -456,9 +531,9 @@ while True:
             delay(0.08)
 
 
-    # 마지막 1초 Idle
+    left, bottom, width, height = motion_10_frames[-1]
+
     clear_canvas()
-    left, bottom, width, height = idle_frames[0]
 
     sonic.clip_draw(
         left, bottom,
