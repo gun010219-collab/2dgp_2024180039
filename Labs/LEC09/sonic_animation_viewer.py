@@ -85,7 +85,6 @@ motion_5_frames = [
 
 # ==================================================
 # MOTION 6
-# 수정된 실제 프레임 영역
 # ==================================================
 
 motion_6_frames = [
@@ -95,6 +94,23 @@ motion_6_frames = [
     (123, 207, 39, 35),
     (172, 207, 39, 35),
     (218, 207, 38, 35)
+]
+
+
+# ==================================================
+# MOTION 7
+# 다음 프레임 묶음 - 8프레임
+# ==================================================
+
+motion_7_frames = [
+    (1,   154, 24, 45),
+    (31,  154, 29, 44),
+    (65,  154, 20, 44),
+    (90,  155, 25, 43),
+    (119, 155, 25, 43),
+    (149, 154, 20, 44),
+    (184, 156, 40, 28),
+    (232, 157, 39, 27)
 ]
 
 
@@ -119,7 +135,6 @@ for repeat in range(5):
 
 # 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
@@ -154,7 +169,6 @@ for repeat in range(5):
 
 # 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
@@ -189,7 +203,6 @@ for repeat in range(5):
 
 # 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
@@ -224,7 +237,6 @@ for repeat in range(5):
 
 # 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
@@ -259,7 +271,6 @@ for repeat in range(5):
 
 # 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
@@ -292,9 +303,42 @@ for repeat in range(5):
         delay(0.08)
 
 
+# 1초 Idle
+clear_canvas()
+left, bottom, width, height = idle_frames[0]
+
+sonic.clip_draw(
+    left, bottom,
+    width, height,
+    600, 300,
+    width * 4, height * 4
+)
+
+update_canvas()
+delay(1)
+
+
+# ==================================================
+# MOTION 7 - 5회
+# ==================================================
+
+for repeat in range(5):
+    for left, bottom, width, height in motion_7_frames:
+        clear_canvas()
+
+        sonic.clip_draw(
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
+        )
+
+        update_canvas()
+        delay(0.08)
+
+
 # 마지막 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
