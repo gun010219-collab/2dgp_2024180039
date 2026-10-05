@@ -4,6 +4,7 @@ open_canvas(1200, 600)
 
 sonic = load_image('sonic-sprite.png')
 
+
 # 첫 번째 동작의 프레임 영역
 # (left, bottom, width, height)
 frames = [
@@ -17,20 +18,24 @@ frames = [
     (208, 455, 25, 35)
 ]
 
-# 첫 번째 동작 1회 재생
-for left, bottom, width, height in frames:
-    clear_canvas()
 
-    sonic.clip_draw(
-        left, bottom,
-        width, height,
-        600, 300,
-        width * 4, height * 4
-    )
+# 첫 번째 동작 5회 반복
+for repeat in range(5):
+    for left, bottom, width, height in frames:
+        clear_canvas()
 
-    update_canvas()
-    delay(0.1)
+        sonic.clip_draw(
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
+        )
 
+        update_canvas()
+        delay(0.1)
+
+
+# 애니메이션 종료 후 1초 대기
 delay(1)
 
 close_canvas()
