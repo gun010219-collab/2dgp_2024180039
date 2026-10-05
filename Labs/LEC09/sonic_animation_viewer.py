@@ -41,8 +41,7 @@ run_frames = [
 
 
 # ==================================================
-# SPIN / ROLL
-# 몸을 둥글게 말아서 회전하는 동작
+# SPIN
 # ==================================================
 
 spin_frames = [
@@ -57,7 +56,22 @@ spin_frames = [
 
 
 # ==================================================
-# IDLE - 5회 반복
+# ROLL
+# 실제 이미지 픽셀 경계 기준
+# ==================================================
+
+roll_frames = [
+    (1,   292, 30, 27),
+    (36,  292, 29, 27),
+    (70,  292, 29, 27),
+    (105, 292, 29, 27),
+    (139, 292, 29, 27),
+    (174, 292, 29, 27)
+]
+
+
+# ==================================================
+# IDLE - 5회
 # ==================================================
 
 for repeat in range(5):
@@ -65,34 +79,26 @@ for repeat in range(5):
         clear_canvas()
 
         sonic.clip_draw(
-            left,
-            bottom,
-            width,
-            height,
-            600,
-            300,
-            width * 4,
-            height * 4
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
         )
 
         update_canvas()
         delay(0.1)
 
 
-# 1초 동안 Idle
+# 1초 Idle
 clear_canvas()
 
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
-    left,
-    bottom,
-    width,
-    height,
-    600,
-    300,
-    width * 4,
-    height * 4
+    left, bottom,
+    width, height,
+    600, 300,
+    width * 4, height * 4
 )
 
 update_canvas()
@@ -100,7 +106,7 @@ delay(1)
 
 
 # ==================================================
-# RUN - 5회 반복
+# RUN - 5회
 # ==================================================
 
 for repeat in range(5):
@@ -108,34 +114,26 @@ for repeat in range(5):
         clear_canvas()
 
         sonic.clip_draw(
-            left,
-            bottom,
-            width,
-            height,
-            600,
-            300,
-            width * 4,
-            height * 4
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
         )
 
         update_canvas()
         delay(0.08)
 
 
-# 1초 동안 Idle
+# 1초 Idle
 clear_canvas()
 
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
-    left,
-    bottom,
-    width,
-    height,
-    600,
-    300,
-    width * 4,
-    height * 4
+    left, bottom,
+    width, height,
+    600, 300,
+    width * 4, height * 4
 )
 
 update_canvas()
@@ -143,7 +141,7 @@ delay(1)
 
 
 # ==================================================
-# SPIN / ROLL - 5회 반복
+# SPIN - 5회
 # ==================================================
 
 for repeat in range(5):
@@ -151,34 +149,61 @@ for repeat in range(5):
         clear_canvas()
 
         sonic.clip_draw(
-            left,
-            bottom,
-            width,
-            height,
-            600,
-            300,
-            width * 4,
-            height * 4
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
         )
 
         update_canvas()
         delay(0.08)
 
 
-# 1초 동안 Idle
+# 1초 Idle
 clear_canvas()
 
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
-    left,
-    bottom,
-    width,
-    height,
-    600,
-    300,
-    width * 4,
-    height * 4
+    left, bottom,
+    width, height,
+    600, 300,
+    width * 4, height * 4
+)
+
+update_canvas()
+delay(1)
+
+
+# ==================================================
+# ROLL - 5회
+# ==================================================
+
+for repeat in range(5):
+    for left, bottom, width, height in roll_frames:
+        clear_canvas()
+
+        sonic.clip_draw(
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
+        )
+
+        update_canvas()
+        delay(0.08)
+
+
+# 마지막 1초 Idle
+clear_canvas()
+
+left, bottom, width, height = idle_frames[0]
+
+sonic.clip_draw(
+    left, bottom,
+    width, height,
+    600, 300,
+    width * 4, height * 4
 )
 
 update_canvas()
