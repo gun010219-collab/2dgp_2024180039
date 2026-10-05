@@ -57,7 +57,6 @@ spin_frames = [
 
 # ==================================================
 # ROLL
-# 실제 이미지 픽셀 경계 기준
 # ==================================================
 
 roll_frames = [
@@ -67,6 +66,22 @@ roll_frames = [
     (105, 292, 29, 27),
     (139, 292, 29, 27),
     (174, 292, 29, 27)
+]
+
+
+# ==================================================
+# MOTION 5
+# Roll 바로 아래쪽 6프레임 동작
+# 실제 픽셀 경계 기준
+# ==================================================
+
+motion_5_frames = [
+    (1,   251, 29, 36),
+    (36,  251, 30, 36),
+    (74,  251, 31, 36),
+    (111, 251, 31, 36),
+    (149, 251, 30, 36),
+    (186, 251, 31, 36)
 ]
 
 
@@ -91,7 +106,6 @@ for repeat in range(5):
 
 # 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
@@ -126,7 +140,6 @@ for repeat in range(5):
 
 # 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
@@ -161,7 +174,6 @@ for repeat in range(5):
 
 # 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
@@ -194,9 +206,42 @@ for repeat in range(5):
         delay(0.08)
 
 
+# 1초 Idle
+clear_canvas()
+left, bottom, width, height = idle_frames[0]
+
+sonic.clip_draw(
+    left, bottom,
+    width, height,
+    600, 300,
+    width * 4, height * 4
+)
+
+update_canvas()
+delay(1)
+
+
+# ==================================================
+# MOTION 5 - 5회
+# ==================================================
+
+for repeat in range(5):
+    for left, bottom, width, height in motion_5_frames:
+        clear_canvas()
+
+        sonic.clip_draw(
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
+        )
+
+        update_canvas()
+        delay(0.08)
+
+
 # 마지막 1초 Idle
 clear_canvas()
-
 left, bottom, width, height = idle_frames[0]
 
 sonic.clip_draw(
