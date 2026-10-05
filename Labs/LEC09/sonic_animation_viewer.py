@@ -198,7 +198,7 @@ while True:
 
     # ==================================================
     # RUN - 5회
-    # 애니메이션과 동시에 좌우 이동
+    # 좌우 이동 + 경계에서 방향 반전
     # ==================================================
 
     run_x = 100
@@ -211,7 +211,7 @@ while True:
 
             clear_canvas()
 
-            # 오른쪽으로 이동
+            # 오른쪽 이동
             if run_speed > 0:
                 sonic.clip_draw(
                     left, bottom,
@@ -220,7 +220,7 @@ while True:
                     width * 4, height * 4
                 )
 
-            # 왼쪽으로 이동
+            # 왼쪽 이동
             else:
                 sonic.clip_composite_draw(
                     left, bottom,
@@ -275,25 +275,66 @@ while True:
 
 
     # ==================================================
-    # SPIN - 5회
+    # SPIN / JUMP - 5회
+    # 회전하면서 상승 후 하강
     # ==================================================
 
+    last_spin_frame = spin_frames[0]
+
     for repeat in range(5):
-        for left, bottom, width, height in spin_frames:
+
+        frame_index = 0
+
+        # 상승
+        for jump_y in range(300, 501, 20):
+
+            left, bottom, width, height = spin_frames[
+                frame_index % len(spin_frames)
+            ]
+
             clear_canvas()
 
             sonic.clip_draw(
                 left, bottom,
                 width, height,
-                600, 300,
+                600, jump_y,
                 width * 4, height * 4
             )
 
             update_canvas()
-            delay(0.08)
+            delay(0.05)
+
+            last_spin_frame = (left, bottom, width, height)
+
+            frame_index += 1
 
 
-    left, bottom, width, height = spin_frames[-1]
+        # 하강
+        for jump_y in range(500, 299, -20):
+
+            left, bottom, width, height = spin_frames[
+                frame_index % len(spin_frames)
+            ]
+
+            clear_canvas()
+
+            sonic.clip_draw(
+                left, bottom,
+                width, height,
+                600, jump_y,
+                width * 4, height * 4
+            )
+
+            update_canvas()
+            delay(0.05)
+
+            last_spin_frame = (left, bottom, width, height)
+
+            frame_index += 1
+
+
+    # 점프 종료 위치에서 1초 정지
+    left, bottom, width, height = last_spin_frame
 
     clear_canvas()
 
