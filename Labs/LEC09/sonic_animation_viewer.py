@@ -7,7 +7,6 @@ sonic = load_image('sonic-sprite.png')
 
 # ==================================================
 # IDLE
-# 맨 위 행 왼쪽의 Idle 동작 7프레임
 # ==================================================
 
 idle_frames = [
@@ -23,7 +22,6 @@ idle_frames = [
 
 # ==================================================
 # RUN
-# 두 번째 행의 달리기 동작
 # ==================================================
 
 run_frames = [
@@ -43,12 +41,27 @@ run_frames = [
 
 
 # ==================================================
-# IDLE 5회 반복
+# SPIN / ROLL
+# 몸을 둥글게 말아서 회전하는 동작
+# ==================================================
+
+spin_frames = [
+    (1,   325, 29, 33),
+    (35,  325, 29, 33),
+    (67,  325, 30, 33),
+    (98,  325, 31, 33),
+    (131, 325, 29, 33),
+    (162, 325, 29, 33),
+    (193, 325, 30, 33)
+]
+
+
+# ==================================================
+# IDLE - 5회 반복
 # ==================================================
 
 for repeat in range(5):
     for left, bottom, width, height in idle_frames:
-
         clear_canvas()
 
         sonic.clip_draw(
@@ -66,11 +79,7 @@ for repeat in range(5):
         delay(0.1)
 
 
-# ==================================================
-# 동작 사이 1초 대기
-# 대기 중에는 Idle 첫 프레임 표시
-# ==================================================
-
+# 1초 동안 Idle
 clear_canvas()
 
 left, bottom, width, height = idle_frames[0]
@@ -91,12 +100,11 @@ delay(1)
 
 
 # ==================================================
-# RUN 5회 반복
+# RUN - 5회 반복
 # ==================================================
 
 for repeat in range(5):
     for left, bottom, width, height in run_frames:
-
         clear_canvas()
 
         sonic.clip_draw(
@@ -114,10 +122,50 @@ for repeat in range(5):
         delay(0.08)
 
 
+# 1초 동안 Idle
+clear_canvas()
+
+left, bottom, width, height = idle_frames[0]
+
+sonic.clip_draw(
+    left,
+    bottom,
+    width,
+    height,
+    600,
+    300,
+    width * 4,
+    height * 4
+)
+
+update_canvas()
+delay(1)
+
+
 # ==================================================
-# 종료 전 Idle 상태로 1초 대기
+# SPIN / ROLL - 5회 반복
 # ==================================================
 
+for repeat in range(5):
+    for left, bottom, width, height in spin_frames:
+        clear_canvas()
+
+        sonic.clip_draw(
+            left,
+            bottom,
+            width,
+            height,
+            600,
+            300,
+            width * 4,
+            height * 4
+        )
+
+        update_canvas()
+        delay(0.08)
+
+
+# 1초 동안 Idle
 clear_canvas()
 
 left, bottom, width, height = idle_frames[0]
