@@ -99,7 +99,6 @@ motion_6_frames = [
 
 # ==================================================
 # MOTION 7
-# 다음 프레임 묶음 - 8프레임
 # ==================================================
 
 motion_7_frames = [
@@ -111,6 +110,23 @@ motion_7_frames = [
     (149, 154, 20, 44),
     (184, 156, 40, 28),
     (232, 157, 39, 27)
+]
+
+
+# ==================================================
+# MOTION 8
+# 원본 이미지 y=377~416 영역
+# ==================================================
+
+motion_8_frames = [
+    (1,   108, 27, 40),
+    (31,  108, 31, 40),
+    (64,  108, 31, 40),
+    (99,  108, 33, 40),
+    (136, 108, 32, 40),
+    (176, 108, 33, 40),
+    (217, 108, 33, 40),
+    (254, 108, 33, 40)
 ]
 
 
@@ -324,6 +340,40 @@ delay(1)
 
 for repeat in range(5):
     for left, bottom, width, height in motion_7_frames:
+        clear_canvas()
+
+        sonic.clip_draw(
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
+        )
+
+        update_canvas()
+        delay(0.08)
+
+
+# 1초 Idle
+clear_canvas()
+left, bottom, width, height = idle_frames[0]
+
+sonic.clip_draw(
+    left, bottom,
+    width, height,
+    600, 300,
+    width * 4, height * 4
+)
+
+update_canvas()
+delay(1)
+
+
+# ==================================================
+# MOTION 8 - 5회
+# ==================================================
+
+for repeat in range(5):
+    for left, bottom, width, height in motion_8_frames:
         clear_canvas()
 
         sonic.clip_draw(
