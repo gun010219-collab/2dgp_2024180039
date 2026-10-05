@@ -6,7 +6,13 @@ sonic = load_image('sonic-sprite.png')
 
 clear_canvas()
 
-sonic.draw(600, 300)
+# 첫 번째 소닉 프레임 출력
+sonic.clip_draw(
+    5, 455,
+    25, 35,
+    600, 300,
+    100, 140
+)
 
 update_canvas()
 
