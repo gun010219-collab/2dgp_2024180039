@@ -131,7 +131,6 @@ motion_8_frames = [
 
 # ==================================================
 # MOTION 9
-# 원본 맨 아래 캐릭터 줄 - 4프레임
 # ==================================================
 
 motion_9_frames = [
@@ -139,6 +138,21 @@ motion_9_frames = [
     (49,  56, 34, 43),
     (96,  59, 23, 39),
     (125, 59, 23, 39)
+]
+
+
+# ==================================================
+# MOTION 10
+# 빠져 있던 Run과 Spin 사이의 6프레임 동작
+# ==================================================
+
+motion_10_frames = [
+    (1,   361, 33, 43),
+    (39,  361, 35, 43),
+    (89,  361, 35, 43),
+    (130, 361, 34, 43),
+    (181, 361, 34, 43),
+    (228, 361, 33, 43)
 ]
 
 
@@ -420,6 +434,40 @@ delay(1)
 
 for repeat in range(5):
     for left, bottom, width, height in motion_9_frames:
+        clear_canvas()
+
+        sonic.clip_draw(
+            left, bottom,
+            width, height,
+            600, 300,
+            width * 4, height * 4
+        )
+
+        update_canvas()
+        delay(0.08)
+
+
+# 1초 Idle
+clear_canvas()
+left, bottom, width, height = idle_frames[0]
+
+sonic.clip_draw(
+    left, bottom,
+    width, height,
+    600, 300,
+    width * 4, height * 4
+)
+
+update_canvas()
+delay(1)
+
+
+# ==================================================
+# MOTION 10 - 5회
+# ==================================================
+
+for repeat in range(5):
+    for left, bottom, width, height in motion_10_frames:
         clear_canvas()
 
         sonic.clip_draw(
