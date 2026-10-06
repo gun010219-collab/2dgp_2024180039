@@ -9,7 +9,7 @@ character = load_image('animation_sheet.png')
 
 
 def handle_events():
-    global running, dir
+    global running, dir, dir_y
 
     events = get_events()
 
@@ -22,6 +22,10 @@ def handle_events():
                 dir += 1
             elif event.key == SDLK_LEFT:
                 dir -= 1
+            elif event.key == SDLK_UP:
+                dir_y += 1
+            elif event.key == SDLK_DOWN:
+                dir_y -= 1
             elif event.key == SDLK_ESCAPE:
                 running = False
 
@@ -30,6 +34,10 @@ def handle_events():
                 dir -= 1
             elif event.key == SDLK_LEFT:
                 dir += 1
+            elif event.key == SDLK_UP:
+                dir_y -= 1
+            elif event.key == SDLK_DOWN:
+                dir_y += 1
 
 
 running = True
@@ -39,6 +47,7 @@ x = TUK_WIDTH // 2
 y = TUK_HEIGHT // 2
 
 dir = 0
+dir_y = 0
 
 
 while running:
@@ -65,6 +74,7 @@ while running:
     frame = (frame + 1) % 8
 
     x += dir * 5
+    y += dir_y * 5
 
     delay(0.05)
 
