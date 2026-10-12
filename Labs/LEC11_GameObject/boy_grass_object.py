@@ -50,30 +50,28 @@ def handle_events():
 
 def reset_world():
     global running
-    global grass
-    global team
+    global world
 
     running = True
-    grass = Grass()
+    world = []
 
-    # List Comprehension으로 소년 객체 10명 생성
-    team = [Boy() for i in range(10)]
+    grass = Grass()
+    world.append(grass)
+
+    team = [Boy() for i in range(11)]
+    world += team
 
 
 def update_world():
-    grass.update()
-
-    for boy in team:
-        boy.update()
+    for o in world:
+        o.update()
 
 
 def render_world():
     clear_canvas()
 
-    grass.draw()
-
-    for boy in team:
-        boy.draw()
+    for o in world:
+        o.draw()
 
     update_canvas()
 
