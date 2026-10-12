@@ -4,6 +4,12 @@ import random
 
 # Game object class here
 
+# 게임 객체를 파악.
+# boy, grass 필요
+
+class Grass:
+    pass
+
 
 def handle_events():
     global running
@@ -15,10 +21,28 @@ def handle_events():
             running = False
 
 
+def reset_world():
+    global running
+    running = True
+
+
+def update_world():
+    pass
+
+
+def render_world():
+    clear_canvas()
+    update_canvas()
 
 
 open_canvas()
 
+reset_world()
 
+while running:
+    handle_events()
+    update_world()
+    render_world()
+    delay(0.05)
 
 close_canvas()
