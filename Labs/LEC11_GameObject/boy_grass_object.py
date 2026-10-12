@@ -20,17 +20,21 @@ class Grass:  # 클래스는 대문자로 시작한다
 
 
 class Boy:
-    def __init__(self):
+    def __init__(self, speed=5):
         self.x, self.y = 0, 90
         self.frame = 0
+        self.speed = speed
         self.image = load_image('run_animation.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 8
-        self.x += 5
+        self.x += self.speed
 
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+        self.image.clip_draw(
+            self.frame * 100, 0, 100, 100,
+            self.x, self.y
+        )
 
 
 def handle_events():
@@ -45,28 +49,28 @@ def handle_events():
 
 def reset_world():
     global running
-    running = True
-
-    # 잔디 객체를 찍어낸다
     global grass
-    grass = Grass()
+    global team
 
-    # 소년 객체를 찍어낸다
-    global boy
-    boy = Boy()
+    running = True
+    grass = Grass()
+    team = [Boy() for i in range(10)]
 
 
 def update_world():
-    global grass, boy
     grass.update()
-    boy.update()
+
+    for boy in team:
+        boy.update()
 
 
 def render_world():
-    global grass, boy
     clear_canvas()
     grass.draw()
-    boy.draw()
+
+    for boy in team:
+        boy.draw()
+
     update_canvas()
 
 
