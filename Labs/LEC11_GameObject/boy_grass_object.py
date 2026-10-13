@@ -5,7 +5,7 @@ import random
 # Game object class here
 
 # 게임 객체를 파악.
-# boy, grass 필요
+# boy, grass, zombie 필요
 
 class Grass:  # 클래스는 대문자로 시작한다
     # 잔디 속성을 초기화
@@ -37,6 +37,43 @@ class Boy:
         )
 
 
+class Zombie:
+    def __init__(self):
+        self.x, self.y = 100, 170
+        self.frame = 0
+        self.image = load_image('zombie_run_animation.png')
+
+    def update(self):
+        self.frame = (self.frame + 1) % 10
+        self.x += 5
+
+    def draw(self):
+        frame_width = self.image.w // 10
+        frame_height = self.image.h
+
+        self.image.clip_draw(
+            self.frame * frame_width, 0,
+            frame_width, frame_height,
+            self.x, self.y,
+            frame_width // 2, frame_height // 2
+        )
+
+class Ball:
+    def __init__(self):
+        self.x = random.randint(30,599)
+        self.y = random.randint(400,599)
+        self.speed = random.randint(10,30)
+        self.image = load_image('ball41x41.png')
+
+    def update(self):
+        self.y -=self.speed
+        if self.y < 20:
+            self.x = random.randint(20,599)
+            self.y = random.randint(599,30)
+
+    def draw(self):
+        self.image.draw(self.x,self.y)
+
 def handle_events():
     global running
     events = get_events()
@@ -55,11 +92,21 @@ def reset_world():
     running = True
     world = []
 
+    # 잔디 객체 생성
     grass = Grass()
     world.append(grass)
 
+    # 소년 객체 11명 생성 (List Comprehension)
     team = [Boy() for i in range(11)]
     world += team
+
+    # 좀비 객체 생성
+    zombie = Zombie()
+    world.append(zombie)
+
+    # ball 객체 20개 생성
+    ball = [Ball() for i in range(20)]
+    world += ball
 
 
 def update_world():
