@@ -57,23 +57,6 @@ class Zombie:
             self.x, self.y,
             frame_width // 2, frame_height // 2
         )
-
-class Ball:
-    def __init__(self):
-        self.x = random.randint(30,599)
-        self.y = random.randint(400,599)
-        self.speed = random.randint(10,30)
-        self.image = load_image('ball41x41.png')
-
-    def update(self):
-        self.y -=self.speed
-        if self.y < 20:
-            self.x = random.randint(20,599)
-            self.y = random.randint(599,30)
-
-    def draw(self):
-        self.image.draw(self.x,self.y)
-
 def handle_events():
     global running
     events = get_events()
@@ -103,10 +86,6 @@ def reset_world():
     # 좀비 객체 생성
     zombie = Zombie()
     world.append(zombie)
-
-    # ball 객체 20개 생성
-    ball = [Ball() for i in range(20)]
-    world += ball
 
 
 def update_world():

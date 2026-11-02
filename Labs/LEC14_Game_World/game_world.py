@@ -1,28 +1,26 @@
-world = [[], []] # layers for game objects
+#world = [] 1차원 리스트
+world = [ [], [] ] #0번 1번 레이어를 가지는 2차원 리스트
 
+# 게임 월드에 객체 추가, 레이어를 지정해야한다
 def add_object(o, depth):
     world[depth].append(o)
 
-def add_objects(ol, depth):
-    world[depth] += ol
-
+# 게임 월드에서 객체 제거
 def remove_object(o):
     for layer in world:
         if o in layer:
             layer.remove(o)
-            return
-
-    raise Exception("Object not found")
+            return # 더이상 찾을 필요가 없으므로 return으로 종료
 
 
+#game logic
 def update():
     for layer in world:
         for o in layer:
             o.update()
 
-def render():
+#game randering
+def rander():
     for layer in world:
         for o in layer:
             o.draw()
-
-

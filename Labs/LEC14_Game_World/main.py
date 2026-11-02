@@ -1,7 +1,9 @@
 from pico2d import *
 from boy import Boy
 from grass import Grass
+from ball import Ball
 
+import game_world
 
 # Game object class here
 
@@ -15,6 +17,12 @@ def handle_events():
             running = False
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_SPACE:
+            if boy.state != 'SLEEP':
+                game_world.add_object(
+                    Ball(boy.x + boy.face_dir * 35, boy.y - 30, boy.face_dir)
+                )
+            boy.handle_event(event)
         else:
             boy.handle_event(event)
 
@@ -24,26 +32,22 @@ def reset_world():
     global world
     global boy
 
-    world = []
-
     grass = Grass()
-    world.append(grass)
+    game_world.add_object(grass)
 
     boy = Boy()
-    world.append(boy)
+    game_world.add_object(boy)
 
 
 
 def update_world():
-    for o in world:
-        o.update()
+    game_world.update()
     pass
 
 
 def render_world():
     clear_canvas()
-    for o in world:
-        o.draw()
+    game_world.rander()
     update_canvas()
 
 
